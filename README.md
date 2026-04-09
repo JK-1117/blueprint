@@ -9,7 +9,7 @@ When you switch models or sessions mid-workflow, context breaks. Builder agents 
 - Scan the codebase recklessly → wastes tokens, reads irrelevant files
 - Skip scanning entirely → lacks interfaces/schemas → produces inconsistent output
 
-`blueprint` fixes this by having an architect agent read _exactly_ the right files, extract _verbatim_ context, and write a spec that makes the builder fully self-sufficient.
+`blueprint` fixes this by having an architect agent read _exactly_ the right files, extract _verbatim_ context, and write a spec that makes a builder agent (like [**`construct`**](https://github.com/JK-1117/construct)) fully self-sufficient.
 
 ## When to Use
 
@@ -17,7 +17,7 @@ Run `/blueprint` immediately after:
 
 - `/brainstorming`
 - `/concise-planning`
-- Any other planning session before handing off to a builder
+- Any other planning session before handing off to a builder like `/construct`.
 
 ## Output Format
 
@@ -36,14 +36,16 @@ The spec always contains these five sections:
 - All types are copy-pasted from source — never inferred
 - Missing context is explicitly flagged, not silently assumed
 
+## The Perfect Pair
+
+This skill is designed as the first half of a two-step workflow. Once `blueprint` generates the spec, hand it off to [**`construct`**](https://github.com/JK-1117/construct)—a strictly constrained execution agent that builds the code without wasting a single token on re-exploration.
+
 ## Installation
 
 Installed globally at `~/.claude/skills/blueprint/`.
 
 ## Usage
 
-```
+```bash
 /blueprint
 ```
-
-Then paste or reference your existing plan. The architect will extract the required context, ask targeted questions if needed, and deliver the spec.
